@@ -1,3 +1,9 @@
 [submodule "build/linalg"]
 	path = build/linalg
 	url = https://github.com/sgorsten/linalg.git
+[submodule "linalg"]
+	path = linalg
+	url = https://github.com/sgorsten/linalg.git
+[submodule "Catch2"]
+	path = Catch2
+	url = https://github.com/catchorg/Catch2.git

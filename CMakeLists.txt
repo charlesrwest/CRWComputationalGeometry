@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8.3)
-PROJECT(learnCppByExperiment)
+PROJECT(CRWComputationalGeometry)
 
 #Enable doxygen documentation generation
 find_package(Doxygen)
@@ -20,7 +20,7 @@ ADD_DEFINITIONS(-std=c++11)
 #Tell compiler where to find required libraries
 link_directories(/usr/lib/x86_64-linux-gnu/)
 
-include_directories(./src/library/ ./src/executables/unitTests )
+include_directories(./src/library/ ./src/executables/unitTests ./linalg ./Catch2/single_include )
 
 find_package(Threads)
 

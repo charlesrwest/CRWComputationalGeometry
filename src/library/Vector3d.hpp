@@ -1,33 +1,10 @@
 #pragma once
 #include<array>
+#include "linalg.h"
 
 namespace CRWCompGeo
 {
 
-class Vector3d : public union{ std::array<double, 3>; struct {double X, double Y, double Z}};
-{
-public:
-Vector3d();
-
-Vector3d(double x, double y, double z);
-}; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+using Vector3d = ::linalg::vec<double, 3>;
 
 }
