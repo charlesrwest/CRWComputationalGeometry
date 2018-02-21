@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Vertex.hpp"
-#include "Triangle.hpp"
+#include "MeshTriangle.hpp"
 
 
 namespace CRWCompGeo
