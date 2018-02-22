@@ -16,3 +16,4 @@ Doxyfile
 .directory
 ui_*
 .directory
+/build/*
