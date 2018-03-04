@@ -16,4 +16,5 @@ Doxyfile
 .directory
 ui_*
 .directory
-/build/*
+build/*
+build-debug/*
