@@ -5,6 +5,7 @@
 #include "Vector3d.hpp"
 #include "Utility.hpp"
 #include<iostream>
+#include "DetailedMesh.hpp"
 
 TEST_CASE( "Point initialization", "Point" )
 {
@@ -31,5 +32,30 @@ TEST_CASE( "EraseFromVectorWithoutPreservingOrder", "Utility" )
     for(int64_t removed_value : elements_to_remove)
     {
         REQUIRE(std::find(vector.begin(), vector.end(), removed_value) == vector.end());
+    }
+}
+
+TEST_CASE( "Detailed Mesh Triangle Normals", "DetailedMesh" )
+{
+    CRWCompGeo::Mesh basic_mesh;
+    basic_mesh.Vertices.emplace_back(CRWCompGeo::Vector3d(0.0, 0.0, 0.0));
+    basic_mesh.Vertices.emplace_back(CRWCompGeo::Vector3d(1.0, 0.0, 0.0));
+    basic_mesh.Vertices.emplace_back(CRWCompGeo::Vector3d(1.0, 1.0, 0.0));
+
+    basic_mesh.Triangles.emplace_back(0, 1, 2);
+
+    CRWCompGeo::DetailedMesh detailed_mesh(basic_mesh);
+
+    for(const CRWCompGeo::TriangleMeta& triangle_meta : detailed_mesh.TriangleMetas)
+    {
+        REQUIRE(length(triangle_meta.Normal) == Approx(1.0));
+    }
+
+    for(const CRWCompGeo::VertexMeta& vertex_meta : detailed_mesh.VertexMetas)
+    {
+        REQUIRE(length(vertex_meta.Normal) == Approx(1.0));
+        REQUIRE(vertex_meta.Normal.x == 0.0);
+        REQUIRE(vertex_meta.Normal.y == 0.0);
+        REQUIRE(vertex_meta.Normal.z == 1.0);
     }
 }

@@ -228,7 +228,7 @@ Vector3d CRWCompGeo::ComputeVertexNormal(const VertexMeta& vertexMeta, DetailedM
     normal += mesh.TriangleMetas[triangle_index].Normal;
     }
 
-    normal = linalg::normalize(vertexMeta.Normal);
+    normal = linalg::normalize(normal);
 
     return normal;
 }
