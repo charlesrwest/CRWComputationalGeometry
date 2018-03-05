@@ -10,9 +10,10 @@ namespace CRWCompGeo
 This function uses edge contraction to attempt to simplify the mesh.
 @param maxAllowedDisplacement: How far a neighbor is allowed to be displaced from the plane of the vertex before the vertex should not be considered for simplification
 @param numConnectedFacesMin: How many connected triangles a vertex must have to be considered for removal (negative if not needed)
+@param numConnectedFacesMax: How many connected triangles a vertex can have before it should no longer be considered for edge collapse
 @param mesh: The mesh to simplify
 */
-void SimplifyMesh(double maxAllowedDisplacement, int64_t numConnectedMin, DetailedMesh& mesh);
+void SimplifyMesh(double maxAllowedDisplacement, int64_t numConnectedMin, int64_t numConnectedFacesMax, DetailedMesh& mesh);
 
 
 
