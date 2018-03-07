@@ -9,6 +9,7 @@ namespace CRWCompGeo
 class Triangle
 {
 public:
+Triangle();
 Triangle(int64_t vertex1, int64_t vertex2, int64_t vertex3);
 
 std::array<int64_t, 3> Vertices;
