@@ -19,9 +19,10 @@ void SimplifyMesh(double maxAllowedDisplacement, int64_t numConnectedMin, int64_
 
 
 
-Vector3d ComputeTriangleNormal(const Triangle& triangle, Mesh& mesh);
+Vector3d ComputeTriangleNormal(const Triangle& triangle, const Mesh& mesh);
 Vector3d ComputeVertexNormal(const VertexMeta& vertexMeta, DetailedMesh& mesh);
 
+std::vector<Vector3d> ComputeVertexNormals(const Mesh& mesh);
 
 template <class Type, class Container>
 void EraseFromVectorWithoutPreservingOrder(const Container& elementsToDelete, std::vector<Type>& vector) 

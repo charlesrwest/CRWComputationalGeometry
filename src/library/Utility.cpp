@@ -412,7 +412,7 @@ for(Triangle& triangle : mesh.Triangles)
 }
 }
 
-Vector3d CRWCompGeo::ComputeTriangleNormal(const Triangle& triangle, Mesh& mesh)
+Vector3d CRWCompGeo::ComputeTriangleNormal(const Triangle& triangle, const Mesh& mesh)
 {
     const Vertex& vertex0 = mesh.Vertices[triangle.Vertices[0]];
     const Vertex& vertex1 = mesh.Vertices[triangle.Vertices[1]];
@@ -436,4 +436,28 @@ Vector3d CRWCompGeo::ComputeVertexNormal(const VertexMeta& vertexMeta, DetailedM
     normal = linalg::normalize(normal);
 
     return normal;
+}
+
+std::vector<Vector3d> CRWCompGeo::ComputeVertexNormals(const Mesh& mesh)
+{
+std::vector<Vector3d> results;
+results.resize(mesh.Vertices.size());
+
+//Compute triangle normals and use them to update vertex normals
+for(const Triangle& triangle : mesh.Triangles)
+{
+Vector3d triangle_normal = ComputeTriangleNormal(triangle, mesh);
+
+for(int64_t vertex_index : triangle.Vertices)
+{
+results[vertex_index] += triangle_normal;
+}
+}
+
+for(Vector3d& vertex_normal : results)
+{
+vertex_normal = linalg::normalize(vertex_normal);
+}
+
+return results;
 }
